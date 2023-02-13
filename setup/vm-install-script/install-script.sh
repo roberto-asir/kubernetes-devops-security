@@ -50,8 +50,9 @@ kubeadm init --kubernetes-version=${KUBE_VERSION} --skip-token-print
 mkdir -p ~/.kube
 sudo cp -i /etc/kubernetes/admin.conf ~/.kube/config
 
-kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
-
+## Roberto change yaml download link to existing one
+# kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
 sleep 60
 
 echo "untaint controlplane node"
@@ -61,7 +62,9 @@ kubectl get node -o wide
 
 
 echo ".........----------------#################._.-.-Java and MAVEN-.-._.#################----------------........."
-sudo apt install openjdk-8-jdk -y
+## Roberto change java version to a compatible version
+# sudo apt install openjdk-8-jdk -y
+sudo apt install openjdk-11-jdk -y
 java -version
 sudo apt install -y maven
 mvn -v
