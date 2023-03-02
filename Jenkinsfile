@@ -40,7 +40,14 @@ pipeline {
                   sh 'docker push robertoasir/numeric-app:""$GIT_COMMIT""'
                 }
             }
-	}  
+	}
+
+      stage('Sonarqube - ASAT') {
+        steps {
+	  sh "mvn clean verify sonar:sonar -Dsonar.projectKey=devsecops -Dsonar.host.url=http://asir-devsecops-practices.eastus.cloudapp.azure.com:9000 -Dsonar.login=sqp_435fe1e48ade73893b6d69d954de4148fb34f86b"
+        }
+      }
+  
       stage('Kubernetes Deployment - DEV'){
           steps {
               withKubeConfig([credentialsId: 'kubeconfig']) {
