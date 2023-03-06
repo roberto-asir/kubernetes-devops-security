@@ -44,7 +44,7 @@ pipeline {
 
       stage('Sonarqube - ASAT') {
         steps {
-	  sh "mvn clean verify sonar:sonar -Dsonar.projectKey=numeric-application -Dsonar.host.url=http://asir-devsecops-practices.eastus.cloudapp.azure.com:9000 -Dsonar.login=sqp_0a05218e96d5dfaf2b492e89baf5555825d4bc84"
+	  sh "mvn clean verify sonar:sonar -Dsonar.projectKey=numeric-application -Dsonar.host.url=http://asir-devsecops-practices.eastus.cloudapp.azure.com:9000 -Dsonar.login=sqp_16220815302119c51022666b8dae81f08cf75b3c"
         }
       }
   
