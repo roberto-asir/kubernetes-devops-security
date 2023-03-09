@@ -9,6 +9,19 @@ pipeline {
             }
         }   
 
+
+      stage('Vulnerability Sacn - Docker') {
+	
+	steps {
+	  sh "mvn dependecy-check:ckheck"
+	}
+	post {
+	  always {
+	    dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
+	  }
+	}
+      }
+
       stage('Unit test') {
             steps {
               sh "mvn test"
