@@ -13,7 +13,7 @@ pipeline {
       stage('Vulnerability Sacn - Docker') {
 	
 	steps {
-	  sh "mvn dependecy-check:ckheck"
+	  sh "mvn dependency-check:check"
 	}
 	post {
 	  always {
