@@ -52,7 +52,7 @@ pipeline {
           steps {
               withDockerRegistry([credentialsId: "dockerhub", url: ""]) {
                   sh 'printenv'
-                  sh 'docker build -t robertoasir/numeric-app:""$GIT_COMMIT"" .'
+                  sh 'sudo docker build -t robertoasir/numeric-app:""$GIT_COMMIT"" .'
                   sh 'docker push robertoasir/numeric-app:""$GIT_COMMIT""'
                 }
             }
